@@ -1,5 +1,5 @@
-Challenge 1 - Unreadable Encoding
----------------------------------
+### Challenge 1 - Unreadable Encoding
+
 A customer has uploaded their CSVs to the SFTP server. They have contacted
 support because they are getting an "Unreadable Encoding" error for the
 `students.csv` file in Remind.

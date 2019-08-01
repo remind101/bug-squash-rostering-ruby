@@ -1,5 +1,5 @@
-Challenge 2 - Missing user
---------------------------
+### Challenge 2 - Missing user
+
 The customer successfully uploaded their CSVs after fixing the problems
 found in challenge 1. But unfortunately what was created is still not
 correct.
