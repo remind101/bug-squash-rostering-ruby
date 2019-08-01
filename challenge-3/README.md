@@ -1,4 +1,4 @@
-==== Challenge 3 - Missing class
+#### Challenge 3 - Missing class
 
 A customer has uploaded their CSVs to the SFTP server. They have contacted
 support because a class they were expecting to be created is missing.
