@@ -1,7 +1,11 @@
 #### Challenge 3 - Missing class
 
-A customer has uploaded their CSVs to the SFTP server. They have contacted
-support because a class they were expecting to be created is missing.
+The customer successfully fixed the user imports.
+But unfortunately what was created is still not 100% correct.
 
-Find what is wrong with the CSVs.
-The files can be found in the `csv-files` directory of this repo.
+The customer is reporting that not all classes where created. They are
+unsure which class is missing or why it didn't get created.
+
+Find which class wasn't created, and why it wasn't created. There is
+a script in this folder that will help you track down the issue.
+You can run using `ruby import_classes.rb`.
