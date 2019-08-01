@@ -1,25 +1,42 @@
 require 'csv'
 
 module ImportUsers
+  FILENAMES = {
+    'teachers' => 'teachers.csv',
+    'students' => 'students.csv',
+    'parents' => 'students.csv',
+  }.freeze
+
   class << self
     def run
-      file = File.read("#{Dir.pwd}/csv-files/students.csv")
-      rows = CSV.parse(file, headers: true)
-      normalize(rows).values
+      users = %w[teachers students parents].inject({}) do |hsh, user_type|
+        rows = rows_for(user_type)
+        hsh.merge normalize(rows, user_type)
+      end
+
+      users.values
     end
 
-    def normalize(rows)
-      students = rows.each_with_object({}) { |row, hsh|
-        user_hsh = normalize_student(row)
-        hsh[user_hsh.fetch(:email)] = user_hsh
-      }
+    def rows_for(user_type)
+      file = File.read("#{Dir.pwd}/csv-files/#{FILENAMES.fetch(user_type)}")
+      rows = CSV.parse(file, headers: true)
+    end
 
-      parents = rows.each_with_object({}) { |row, hsh|
-        user_hsh = normalize_parent(row)
+    def normalize(rows, user_type)
+      rows.each_with_object({}) do |row, hsh|
+        user_hsh = send("normalize_#{user_type[0..-2]}".to_sym, row)
         hsh[user_hsh.fetch(:email)] = user_hsh
-      }
+      end
+    end
 
-      students.merge(parents)
+    def normalize_teacher(row)
+      {
+        source_id: row.fetch("teacher_id"),
+        first_name: row.fetch("teacher_first_name"),
+        last_name: row.fetch("teacher_last_name"),
+        email: row.fetch('teacher_email'),
+        phone_number: row.fetch('teacher_mobile_phone'),
+      }
     end
 
     def normalize_student(row)
@@ -50,7 +67,7 @@ module ImportUsers
   end
 end
 
-expected_total = 927
+expected_total = 1056
 imported_users = ImportUsers.run
 
 if (imported_users.count == expected_total)
