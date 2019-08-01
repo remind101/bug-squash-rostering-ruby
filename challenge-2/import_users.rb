@@ -31,9 +31,9 @@ module ImportUsers
 
     def normalize_teacher(row)
       {
-        source_id: row.fetch("teacher_id"),
-        first_name: row.fetch("teacher_first_name"),
-        last_name: row.fetch("teacher_last_name"),
+        source_id: row.fetch('teacher_id'),
+        first_name: row.fetch('teacher_first_name'),
+        last_name: row.fetch('teacher_last_name'),
         email: row.fetch('teacher_email'),
         phone_number: row.fetch('teacher_mobile_phone'),
       }
@@ -41,9 +41,9 @@ module ImportUsers
 
     def normalize_student(row)
       {
-        source_id: row.fetch("student_id"),
-        first_name: row.fetch("student_first_name"),
-        last_name: row.fetch("student_last_name"),
+        source_id: row.fetch('student_id'),
+        first_name: row.fetch('student_first_name'),
+        last_name: row.fetch('student_last_name'),
         dob: Date.parse(row.fetch('dob')),
         grade: normalize_grade(row.fetch('grade')),
         email: row.fetch('student_email'),
@@ -53,9 +53,9 @@ module ImportUsers
 
     def normalize_parent(row)
       {
-        source_id: "parent_#{row.fetch("student_id")}_#{row.fetch("guardian_first_name")}",
-        first_name: row.fetch("guardian_first_name"),
-        last_name: row.fetch("guardian_last_name"),
+        source_id: "parent_#{row.fetch('student_id')}_#{row.fetch('guardian_first_name')}",
+        first_name: row.fetch('guardian_first_name'),
+        last_name: row.fetch('guardian_last_name'),
         email: row.fetch('guardian_email'),
         phone_number: row.fetch('guardian_phone'),
       }
@@ -71,7 +71,7 @@ expected_total = 1056
 imported_users = ImportUsers.run
 
 if (imported_users.count == expected_total)
-  puts "All users created! :D"
+  puts 'All users created! :D'
 else
   puts "Expected #{expected_total} users, #{imported_users.count} were created. :("
 end
