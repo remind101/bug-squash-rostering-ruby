@@ -18,7 +18,8 @@ module ImportUsers
     end
 
     def rows_for(user_type)
-      file = File.read("../csv-files/#{FILENAMES.fetch(user_type)}")
+      pathname = "#{File.dirname(__FILE__)}/../csv-files/#{FILENAMES.fetch(user_type)}"
+      file = File.read(pathname)
       rows = CSV.parse(file, headers: true)
     end
 
