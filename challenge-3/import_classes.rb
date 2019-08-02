@@ -15,7 +15,7 @@ module ImportClasses
     end
 
     def rows_for(csv_type)
-      pathname = "#{File.dirname(__FILE__)}/../csv-files/#{FILENAMES.fetch(user_type)}"
+      pathname = "#{File.dirname(__FILE__)}/../csv-files/#{FILENAMES.fetch(csv_type)}"
       file = File.read(pathname)
       rows = CSV.parse(file, headers: true)
     end
