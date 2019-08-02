@@ -9,12 +9,10 @@ module ImportUsers
 
   class << self
     def run
-      users = %w[teachers students parents].inject({}) do |hsh, user_type|
+      %w[teachers students parents].inject({}) do |hsh, user_type|
         rows = rows_for(user_type)
         hsh.merge normalize(rows, user_type)
       end
-
-      users.values
     end
 
     def rows_for(user_type)
@@ -71,7 +69,10 @@ end
 expected_total = 1056
 imported_users = ImportUsers.run
 
-if (imported_users.count == expected_total)
+first_user = imported_users["student.studentlast0@061e09b6a8c0950342b51e14f70960e9.exampleschool.org"]
+first_user ||= imported_users["student_0"]
+
+if (first_user && imported_users.count == expected_total)
   puts 'All users created! :D'
 else
   puts "Expected #{expected_total} users, #{imported_users.count} were created. :("
