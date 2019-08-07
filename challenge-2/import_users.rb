@@ -69,10 +69,7 @@ end
 expected_total = 1056
 imported_users = ImportUsers.run
 
-first_user = imported_users["student.studentlast0@061e09b6a8c0950342b51e14f70960e9.exampleschool.org"]
-first_user ||= imported_users["student_0"]
-
-if (first_user && imported_users.count == expected_total)
+if (imported_users.count == expected_total)
   puts 'All users created! :D'
 else
   puts "Expected #{expected_total} users, #{imported_users.count} were created. :("
