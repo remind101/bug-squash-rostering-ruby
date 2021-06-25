@@ -1,11 +1,12 @@
-#### Challenge 2 - Missing class
+### Challenge 2 - Missing user
 
-The customer successfully fixed the user imports.
-But unfortunately what was created is still not 100% correct.
+The customer successfully uploaded their CSVs after fixing the problems
+found in challenge 1. But unfortunately what was created is still not
+correct.
 
-The customer is reporting that not all classes were created. They are
-unsure which class is missing or why it didn't get created.
+The customer is reporting that not all users were created. They are
+unsure which user is missing or why they weren't created.
 
-Find which class wasn't created, and why it wasn't created. There is
+Find which user wasn't created, and why they weren't created. There is
 a script in this folder that will help you track down the issue.
-You can run using `ruby import_classes.rb`.
+You can run using `ruby import_users.rb`.
