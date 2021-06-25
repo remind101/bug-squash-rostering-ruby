@@ -1,7 +1,4 @@
-#### Challenge 2 - Missing class
-
-The customer successfully fixed the user imports.
-But unfortunately what was created is still not 100% correct.
+#### Challenge 1 - Missing class
 
 The customer is reporting that not all classes were created. They are
 unsure which class is missing or why it didn't get created.
