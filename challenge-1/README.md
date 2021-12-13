@@ -1,11 +1,8 @@
-### Challenge 1 - Unreadable Encoding
+#### Challenge 1 - Missing class
 
-A customer has uploaded their CSVs to the SFTP server. They have contacted
-support because they are getting an "Unreadable Encoding" Remind specific error
-for the `students.csv` file in Remind.
+The customer is reporting that not all classes were created. They are
+unsure which class is missing or why it didn't get created.
 
-You can find descriptions of Remind errors at
-https://help.remind.com/hc/en-us/articles/360014402739-Resolving-SIS-sync-file-errors-.
-
-Find what is causing the error with the `students.csv` file using irb and fix the problem
-with the data. The file can be found in the `csv-files` directory of this repo.
+Find which class wasn't created, and why it wasn't created. There is
+a script in this folder that will help you track down the issue.
+You can run using `ruby import_classes.rb`.
