@@ -15,7 +15,7 @@ module ImportClasses
     end
 
     def rows_for(csv_type)
-      pathname = "#{File.dirname(__FILE__)}/../csv-files/#{FILENAMES.fetch(csv_type)}"
+      pathname = "#{File.dirname(__FILE__)}/../../csv-files/#{FILENAMES.fetch(csv_type)}"
       file = File.read(pathname)
       rows = CSV.parse(file, headers: true)
     end
@@ -27,7 +27,8 @@ module ImportClasses
         teacher_enrollment_row = enrollment_rows
           .select { |er| er.fetch('class_id') == class_id }
           .find { |cer| cer.fetch('user_id').start_with?('teacher_') }
-        next if teacher_enrollment_row.nil?
+          next if teacher_enrollment_row.nil?
+
 
         hsh[class_id] = normalize_class(class_row, teacher_enrollment_row)
       end
